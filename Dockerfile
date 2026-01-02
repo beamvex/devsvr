@@ -13,4 +13,10 @@ RUN apt-get install -y nodejs
 
 COPY root/ /
 
+RUN chmod 600 /root/.ssh/authorized_keys
+RUN chmod 700 /root/.ssh
 
+RUN curl -fsSL https://code-server.dev/install.sh | sh   
+RUN curl -s https://raw.githubusercontent.com/PumpkinSeed/windsurf-installer/refs/heads/main/install.sh | sh   
+
+EXPOSE 2222
