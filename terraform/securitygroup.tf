@@ -67,12 +67,3 @@ output "security_group_all_tags" {
   description = "The tags of the security group"
 }
 
-output "security_group_all_tags" {
-  value = aws_security_group.app.tags
-  description = "The tags of the security group"
-}
-
-output "security_group_tag_list" {
-  value = [for k, v in aws_security_group.app.tags : "${k}=${v}"]
-  description = "The tags of the security group as a list of key=value strings"
-}

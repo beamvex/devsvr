@@ -101,7 +101,4 @@ output "ecs_execution_role_policy_name" {
   value = "AmazonECSTaskExecutionRolePolicy"
 }
 
-output "ecs_execution_role_policy_document" {
-  value = data.aws_iam_policy_document.ecs_execution_policy.json
-}
 
