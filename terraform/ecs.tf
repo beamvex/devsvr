@@ -28,7 +28,7 @@ resource "aws_ecs_task_definition" "app" {
     {
       name  = "app"
       image = local.docker_image_uri
-      command = ["/bin/bash", "-c", "sleep 5; timebomb"]
+      command = ["/bin/bash", "-c", "sleep 1800"]
       environment = [
         {
           name  = "S6_KEEP_ENV"

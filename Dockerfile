@@ -19,4 +19,7 @@ RUN chmod 700 /root/.ssh
 RUN curl -fsSL https://code-server.dev/install.sh | sh   
 RUN curl -s https://raw.githubusercontent.com/PumpkinSeed/windsurf-installer/refs/heads/main/install.sh | sh   
 
+RUN apt-get install -y git openssl pkg-config libssl-dev
+
+
 EXPOSE 2222

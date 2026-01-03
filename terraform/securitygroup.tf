@@ -8,8 +8,8 @@ resource "aws_security_group" "app" {
   vpc_id      = data.aws_vpc.default.id
 
   ingress {
-    from_port   = 3001
-    to_port     = 3001
+    from_port   = 2222
+    to_port     = 2222
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
