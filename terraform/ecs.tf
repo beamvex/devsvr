@@ -24,11 +24,33 @@ resource "aws_ecs_task_definition" "app" {
   cpu                      = "4096"
   memory                   = "16384"
   execution_role_arn       = aws_iam_role.ecs_execution.arn
+
+  volume {
+    name = "efs-root"
+
+    efs_volume_configuration {
+      file_system_id     = aws_efs_file_system.app.id
+      root_directory     = "/"
+      transit_encryption = "ENABLED"
+
+      authorization_config {
+        iam = "DISABLED"
+      }
+    }
+  }
+
   container_definitions    = jsonencode([
     {
       name  = "app"
       image = local.docker_image_uri
       command = ["/bin/bash", "-c", "sleep 1800"]
+      mountPoints = [
+        {
+          sourceVolume  = "efs-root"
+          containerPath = "/root"
+          readOnly      = false
+        }
+      ]
       environment = [
         {
           name  = "S6_KEEP_ENV"
